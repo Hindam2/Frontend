@@ -81,13 +81,6 @@
   color: var(--dark);
   margin-bottom: 0.5rem;
 }
-
-.profile-badges {
-  display: flex;
-  gap: 0.6rem;
-  flex-wrap: wrap;
-}
-
 .badge-green {
   background: #dcfce7;
   color: #15803d;
@@ -253,9 +246,5 @@ hr {
   .profile-card {
     flex-direction: column;
     text-align: center;
-  }
-
-  .profile-badges {
-    justify-content: center;
   }
 }
