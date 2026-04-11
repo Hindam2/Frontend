@@ -20,7 +20,6 @@ function joinGame() {
   btn.textContent = 'Joining...';
   btn.disabled = true;
 
-  // API call
   setTimeout(() => {
     alert(`Joining game with PIN: ${pin}`);
     btn.textContent = 'JOIN GAME';

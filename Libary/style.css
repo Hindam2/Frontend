@@ -72,15 +72,6 @@ body {
     cursor: pointer;
 }
 
-.btn-purple {
-    background: var(--purple);
-    color: white;
-    border: none;
-    padding: 8px 18px;
-    border-radius: 20px;
-    font-weight: 700;
-    cursor: pointer;
-}
 
 .avatar img {
     width: 35px;
