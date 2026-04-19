@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const tabs = document.querySelectorAll('.tab');
-    const searchInput = document.getElementById('quizSearch');
-    const quizCards = document.querySelectorAll('.quiz-card');
+  const searchInput = document.getElementById("quizSearch");
+  const quizCards = document.querySelectorAll(".quiz-card");
 
     // 1. Tab Switching Logic
     tabs.forEach(tab => {
@@ -16,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 2. Simple Search Filter  
+    // 2. Simple Search Filter
     searchInput.addEventListener('input', (e) => {
         const term = e.target.value.toLowerCase();
         
@@ -30,13 +29,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 3. Play Button Interaction
-    const allPlayButtons = document.querySelectorAll('.play-btn, .mini-play, .play-circle');
-    allPlayButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const quizTitle = btn.closest('div').querySelector('h3, h4').innerText;
-            alert(`Starting Game: ${quizTitle}`);
-        });
+  const playButtons = document.querySelectorAll(".play-btn, .play-circle");
+
+  playButtons.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+
+      const titleElement = btn.closest("div").querySelector("h3, h4");
+      const quizTitle = titleElement ? titleElement.innerText : "Quiz";
+
+      alert(`Starting Game: ${quizTitle}`);
     });
-});
+  });
+};);
