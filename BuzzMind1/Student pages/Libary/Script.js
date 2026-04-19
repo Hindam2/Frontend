@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 2. Simple Search Filter
+    // 2. Simple Search Filter  
     searchInput.addEventListener('input', (e) => {
         const term = e.target.value.toLowerCase();
         
