@@ -69,7 +69,6 @@ function renderRoster(list) {
       <td>${participationBars(s.participation)}</td>
       <td>
         <div class="action-btns">
-          <button class="btn-edit" data-id="${s.id}">✏️</button>
           <button class="btn-delete" data-id="${s.id}">🗑️</button>
         </div>
       </td>

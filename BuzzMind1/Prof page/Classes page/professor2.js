@@ -34,7 +34,7 @@ function addNewClass() {
       <div class="pbar"><div class="pf pf-g" style="width:0%"></div></div>
       <div class="cf">
         <span class="stc">👥 0 Students</span>
-        <button class="mbtn" onclick="manage('${name.trim()}')">Manage</button>
+        <a href="../classes_design/classes_page.html"><button class="mbtn" onclick="manage('${name.trim()}')">Manage</button></a>
       </div>
     </div>`;
 

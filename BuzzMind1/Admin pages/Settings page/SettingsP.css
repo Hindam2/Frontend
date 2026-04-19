@@ -54,23 +54,6 @@
   color: var(--white);
 }
 
-.edit-avatar {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  background: var(--purple);
-  color: var(--white);
-  font-size: 0.65rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  cursor: pointer;
-}
-
 .profile-info h2 {
   font-family: var(--font-head);
   font-size: 1.6rem;
