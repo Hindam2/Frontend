@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library - BuzzMind</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../BuzzMind1/Home Page/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="#" class="logo">BuzzMind</a>
+        <ul class="nav-links">
+            <li><a href="../BuzzMind1/Home Page/Index.html">Discover</a></li>
+            <li><a href="#" class="active">Library</a></li>
+            <li><a href="#">Reports</a></li>
+            <li><a href="#">Groups</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button class="btn-primary-blue">Enter PIN</button>
+            <div class="avatar">
+                <a href="../BuzzMind1/Settings page/Settings.html"><img src="https://i.pravatar.cc/150?u=user123" alt="User"></a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content-wrapper">
+        <header class="library-header">
+            <div class="header-top">
+                <p class="subtitle">YOUR COLLECTION</p>
+                <h1>Library</h1>
+                <div class="search-container">
+                    <input type="text" placeholder="Search your quizzes..." id="quizSearch">
+                    <span class="search-icon">🔍</span>
+                </div>
+            </div>
+
+            <div class="filter-tabs">
+                <button class="tab active" data-filter="all">All Quizzes</button>
+                <button class="tab" data-filter="drafts">Drafts</button>
+                <button class="tab" data-filter="collections">Collections</button>
+            </div>
+        </header>
+
+        <section class="quiz-section">
+            <div class="section-header">
+                <h2>📁 My Quizzes</h2>
+                <a href="#" class="view-all">View all</a>
+            </div>
+            <div class="quiz-grid" id="myQuizzes">
+                <div class="quiz-card">
+                    <div class="card-image science">
+                        <span class="badge science-tag">SCIENCE</span>
+                        <button class="play-btn">▶</button>
+                    </div>
+                    <div class="card-info">
+                        <h3>The Quantum Mechanics Challenge</h3>
+                        <p>15 Questions • 1.2k plays</p>
+                    </div>
+                </div>
+                <div class="quiz-card">
+                    <div class="card-image tech">
+                        <span class="badge tech-tag">TECHNOLOGY</span>
+                        <button class="play-btn">▶</button>
+                    </div>
+                    <div class="card-info">
+                        <h3>Future of AI & Robotics</h3>
+                        <p>10 Questions • 842 plays</p>
+                    </div>
+                </div>
+                <div class="quiz-card">
+                    <div class="card-image art">
+                        <span class="badge art-tag">ART</span>
+                        <button class="play-btn">▶</button>
+                    </div>
+                    <div class="card-info">
+                        <h3>History of Impressionism</h3>
+                        <p>20 Questions • 2.1k plays</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="quiz-section">
+            <div class="section-header">
+                <h2>❤️ Favorites</h2>
+            </div>
+            <div class="horizontal-scroll">
+                <div class="fav-card purple-grad">
+                    <div class="fav-icon">🌐</div>
+                    <h4>World Capitals Masterclass</h4>
+                    <p>25 QUESTIONS • HIGH DIFFICULTY</p>
+                    <button class="mini-play">▶</button>
+                </div>
+                <div class="fav-card green-grad">
+                    <div class="fav-icon">🌲</div>
+                    <h4>National Parks Explorer</h4>
+                    <p>12 QUESTIONS • MEDIUM DIFFICULTY</p>
+                    <button class="mini-play">▶</button>
+                </div>
+                <div class="fav-card blue-grad">
+                    <div class="fav-icon">🎵</div>
+                    <h4>90s Rock Pop Trivia</h4>
+                    <p>18 QUESTIONS • FUN MODE</p>
+                    <button class="mini-play">▶</button>
+                </div>
+                <button class="add-btn">+</button>
+            </div>
+        </section>
+
+        <section class="quiz-section">
+            <div class="section-header">
+                <h2>👥 Shared with Me</h2>
+            </div>
+            <div class="shared-list">
+                <div class="shared-item">
+                    <div class="shared-icon psych">🧠</div>
+                    <div class="shared-text">
+                        <h4>Introduction to Psychology</h4>
+                        <p>by <span>Dr. Sarah Miller</span> • 8 Questions</p>
+                    </div>
+                    <button class="play-circle">▶</button>
+                </div>
+                <div class="shared-item">
+                    <div class="shared-icon math">➗</div>
+                    <div class="shared-text">
+                        <h4>Advanced Algebra Quiz</h4>
+                        <p>by <span>Math Department</span> • 12 Questions</p>
+                    </div>
+                    <button class="play-circle">▶</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="Script.js"></script>
+</body>
+</html>
