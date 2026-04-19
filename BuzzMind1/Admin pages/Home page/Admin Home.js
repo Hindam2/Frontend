@@ -105,7 +105,7 @@ function addProfessor() {
       </div>
     </div>
     <div class="card-foot">
-      <button class="btn-view" onclick="viewDetails('${name.trim()}')">View Details</button>
+      <a href="../prof dashboard/index.html"><button class="btn-view" onclick="viewDetails('${name.trim()}')">View Details</button></a>
       <button class="btn-del" onclick="deleteProfessor(this, '${name.trim()}')">🗑</button>
     </div>`;
 
