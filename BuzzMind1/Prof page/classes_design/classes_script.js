@@ -1,9 +1,9 @@
 // ── Student data ──
 const students = [
   { id: 1, name: 'Alex "Neutron" Rivera', email: 'alex.rivera@buzzmind.com', grade: 94, participation: 4, emoji: '🧑‍🚀' },
-  { id: 2, name: 'Luna Stark',            email: 'luna.stark@buzzmind.com',  grade: 89, participation: 3, emoji: '👩‍🔬' },
-  { id: 3, name: 'Jordan "Flash" Wu',     email: 'jordan.wu@buzzmind.com',   grade: 72, participation: 2, emoji: '🧑‍💻' },
-  { id: 4, name: 'Zara "Electron" Vance', email: 'zara.vance@buzzmind.com',  grade: 91, participation: 4, emoji: '👩‍🎓' },
+  { id: 2, name: 'Luna Stark', email: 'luna.stark@buzzmind.com', grade: 89, participation: 3, emoji: '👩‍🔬' },
+  { id: 3, name: 'Jordan "Flash" Wu', email: 'jordan.wu@buzzmind.com', grade: 72, participation: 2, emoji: '🧑‍💻' },
+  { id: 4, name: 'Zara "Electron" Vance', email: 'zara.vance@buzzmind.com', grade: 91, participation: 4, emoji: '👩‍🎓' },
 ];
 
 let editingId = null;
@@ -13,12 +13,12 @@ function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-// ── Name validation (letters, spaces, hyphens, apostrophes only — min 2 chars) ──
+// ── Name validation ──
 function isValidName(name) {
   return /^[a-zA-Z\s\-']{2,}$/.test(name);
 }
 
-// ── Show/clear error messages ──
+// ── Error helpers ──
 function showError(id, message) {
   document.querySelector(id).textContent = message;
 }
@@ -43,18 +43,14 @@ function participationBars(count) {
   return `<div class="participation-bars">${bars}</div>`;
 }
 
-// ── Render roster ──
+// ── Render ──
 function renderRoster(list) {
   const tbody = document.querySelector('#roster-body');
   tbody.innerHTML = '';
 
-  if (list.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;color:#aaa;padding:24px;">No students found.</td></tr>';
-    return;
-  }
-
   list.forEach(s => {
     const tr = document.createElement('tr');
+
     tr.innerHTML = `
       <td>
         <div class="student-info">
@@ -73,6 +69,7 @@ function renderRoster(list) {
         </div>
       </td>
     `;
+
     tbody.appendChild(tr);
   });
 
@@ -80,17 +77,15 @@ function renderRoster(list) {
     `SHOWING ${list.length} OF ${students.length} STUDENTS`;
 
   document.querySelectorAll('.btn-edit').forEach(btn => {
-    btn.addEventListener('click', () => openEditModal(parseInt(btn.dataset.id)));
+    btn.addEventListener('click', () => openEditModal(+btn.dataset.id));
   });
 
   document.querySelectorAll('.btn-delete').forEach(btn => {
     btn.addEventListener('click', () => {
-      const id = parseInt(btn.dataset.id);
+      const id = +btn.dataset.id;
       const idx = students.findIndex(s => s.id === id);
-      if (idx !== -1) {
-        students.splice(idx, 1);
-        renderRoster(students);
-      }
+      students.splice(idx, 1);
+      renderRoster(students);
     });
   });
 }
@@ -98,132 +93,85 @@ function renderRoster(list) {
 // ── Search ──
 document.querySelector('#search-input').addEventListener('input', (e) => {
   const q = e.target.value.toLowerCase();
-  const filtered = students.filter(s =>
-    s.name.toLowerCase().includes(q) || s.email.toLowerCase().includes(q)
-  );
-  renderRoster(filtered);
+  renderRoster(students.filter(s =>
+    s.name.toLowerCase().includes(q) ||
+    s.email.toLowerCase().includes(q)
+  ));
 });
 
-// ── Add Student Modal ──
+// ── Add Modal ──
 const addModal = document.querySelector('#add-modal');
 
-document.querySelector('#add-student-btn').addEventListener('click', () => {
-  document.querySelector('#new-name').value = '';
-  document.querySelector('#new-email').value = '';
-  clearErrors('#add-name-error', '#add-email-error');
+document.querySelector('#add-student-btn').onclick = () => {
   addModal.style.display = 'flex';
-});
+};
 
-document.querySelector('#confirm-add').addEventListener('click', () => {
-  const name  = document.querySelector('#new-name').value.trim();
+document.querySelector('#cancel-add').onclick = () => {
+  addModal.style.display = 'none';
+};
+
+document.querySelector('#confirm-add').onclick = () => {
+  const name = document.querySelector('#new-name').value.trim();
   const email = document.querySelector('#new-email').value.trim();
 
   clearErrors('#add-name-error', '#add-email-error');
 
-  let valid = true;
-
-  if (!name) {
-    showError('#add-name-error', 'Please enter a name.');
-    valid = false;
-  } else if (!isValidName(name)) {
-    showError('#add-name-error', 'Name must be at least 2 characters. No numbers or special characters.');
-    valid = false;
+  if (!isValidName(name)) {
+    showError('#add-name-error', 'Invalid name');
+    return;
   }
 
-  if (!email) {
-    showError('#add-email-error', 'Please enter an email.');
-    valid = false;
-  } else if (!isValidEmail(email)) {
-    showError('#add-email-error', 'Please enter a valid email address.');
-    valid = false;
+  if (!isValidEmail(email)) {
+    showError('#add-email-error', 'Invalid email');
+    return;
   }
-
-  if (!valid) return;
 
   students.push({
     id: Date.now(),
     name,
     email,
-    grade: Math.floor(Math.random() * 30) + 70,
-    participation: Math.floor(Math.random() * 4) + 1,
-    emoji: '🧑‍🎓',
+    grade: 80,
+    participation: 3,
+    emoji: '🧑‍🎓'
   });
 
   addModal.style.display = 'none';
   renderRoster(students);
-});
+};
 
-document.querySelector('#cancel-add').addEventListener('click', () => {
-  addModal.style.display = 'none';
-});
-
-// ── Edit Student Modal ──
+// ── Edit Modal ──
 const editModal = document.querySelector('#edit-modal');
 
 function openEditModal(id) {
-  const student = students.find(s => s.id === id);
-  if (!student) return;
+  const s = students.find(x => x.id === id);
   editingId = id;
-  document.querySelector('#edit-name').value  = student.name;
-  document.querySelector('#edit-email').value = student.email;
-  clearErrors('#edit-name-error', '#edit-email-error');
+
+  document.querySelector('#edit-name').value = s.name;
+  document.querySelector('#edit-email').value = s.email;
+
   editModal.style.display = 'flex';
 }
 
-document.querySelector('#confirm-edit').addEventListener('click', () => {
-  const name  = document.querySelector('#edit-name').value.trim();
-  const email = document.querySelector('#edit-email').value.trim();
+document.querySelector('#confirm-edit').onclick = () => {
+  const s = students.find(x => x.id === editingId);
 
-  clearErrors('#edit-name-error', '#edit-email-error');
-
-  let valid = true;
-
-  if (!name) {
-    showError('#edit-name-error', 'Please enter a name.');
-    valid = false;
-  } else if (!isValidName(name)) {
-    showError('#edit-name-error', 'Name must be at least 2 characters. No numbers or special characters.');
-    valid = false;
-  }
-
-  if (!email) {
-    showError('#edit-email-error', 'Please enter an email.');
-    valid = false;
-  } else if (!isValidEmail(email)) {
-    showError('#edit-email-error', 'Please enter a valid email address.');
-    valid = false;
-  }
-
-  if (!valid) return;
-
-  const student = students.find(s => s.id === editingId);
-  if (student) {
-    student.name  = name;
-    student.email = email;
-  }
+  s.name = document.querySelector('#edit-name').value;
+  s.email = document.querySelector('#edit-email').value;
 
   editModal.style.display = 'none';
   renderRoster(students);
-});
+};
 
-document.querySelector('#cancel-edit').addEventListener('click', () => {
+document.querySelector('#cancel-edit').onclick = () => {
   editModal.style.display = 'none';
+};
+
+// ── Close modals ──
+document.querySelectorAll('.modal-overlay').forEach(m => {
+  m.onclick = e => {
+    if (e.target === m) m.style.display = 'none';
+  };
 });
 
-// ── Close modals on backdrop click ──
-document.querySelectorAll('.modal-overlay').forEach(modal => {
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) modal.style.display = 'none';
-  });
-});
-
-// ── Pagination (visual only for now) ──
-document.querySelectorAll('.page-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.page-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-  });
-});
-
-// ── Initial render ──
+// ── Init ──
 renderRoster(students);
