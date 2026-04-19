@@ -69,9 +69,6 @@ document.querySelector("#details-close").addEventListener("click", () => {
 // ── Archive modal ──
 const archiveModal = document.querySelector("#archive-modal");
 
-document.querySelector(".archive-link").addEventListener("click", () => {
-  archiveModal.style.display = "flex";
-});
 
 document.querySelector("#archive-close").addEventListener("click", () => {
   archiveModal.style.display = "none";
