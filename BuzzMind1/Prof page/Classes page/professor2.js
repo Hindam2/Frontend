@@ -1,6 +1,3 @@
-// =============================================
-//  BuzzMind – professor2.js
-// =============================================
 
 // ---------- Search ----------
 document.getElementById('searchInput').addEventListener('input', function () {
