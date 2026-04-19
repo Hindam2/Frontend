@@ -1,7 +1,6 @@
 :root {
     --purple: #5b21b6;
     --purple-light: #f5f3ff;
-    --blue-btn: #0056b3;
     --gray-bg: #fdfcff;
     --text-dark: #2d1b5e;
     --text-muted: #6b7280;
@@ -17,7 +16,7 @@ body {
     color: var(--text-dark);
 }
 
-/* --- Navbar adapted from your landing page --- */
+/* ================= NAVBAR ================= */
 .navbar {
     display: flex;
     align-items: center;
@@ -72,7 +71,6 @@ body {
     cursor: pointer;
 }
 
-
 .avatar img {
     width: 35px;
     height: 35px;
@@ -80,7 +78,7 @@ body {
     border: 2px solid #ffccbc;
 }
 
-/* --- Layout --- */
+/* ================= LAYOUT ================= */
 .content-wrapper {
     max-width: 1100px;
     margin: 0 auto;
@@ -100,6 +98,7 @@ body {
     letter-spacing: 1px;
 }
 
+/* ================= SEARCH BAR FIX ================= */
 .search-container {
     position: relative;
     max-width: 400px;
@@ -108,43 +107,25 @@ body {
 
 #quizSearch {
     width: 100%;
-    padding: 12px 20px;
+    padding: 12px 45px 12px 20px; /* space for icon */
     border-radius: 30px;
     border: none;
     background: #f1e9ff;
     font-size: 1rem;
+    outline: none;
 }
 
-/* --- Tabs --- */
-.filter-tabs {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 40px;
-}
-
-.tab {
-    padding: 8px 20px;
-    border-radius: 20px;
-    border: none;
-    background: #eee;
-    font-weight: 700;
-    cursor: pointer;
+.search-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1rem;
     color: var(--text-muted);
+    pointer-events: none;
 }
 
-.tab.active {
-    background: var(--purple);
-    color: white;
-}
-
-/* --- Quiz Cards --- */
-.section-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
+/* ================= QUIZ GRID ================= */
 .quiz-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -160,17 +141,26 @@ body {
     transition: transform 0.2s;
 }
 
-.quiz-card:hover { transform: translateY(-5px); }
+.quiz-card:hover {
+    transform: translateY(-5px);
+}
 
 .card-image {
     height: 160px;
     position: relative;
-    background: #ddd;
 }
 
-.science { background: linear-gradient(45deg, #1e4d40, #3a7a6a); }
-.tech { background: linear-gradient(45deg, #7a9a9a, #a3c2c2); }
-.art { background: linear-gradient(45deg, #999, #ccc); }
+.science {
+    background: linear-gradient(45deg, #1e4d40, #3a7a6a);
+}
+
+.tech {
+    background: linear-gradient(45deg, #7a9a9a, #a3c2c2);
+}
+
+.art {
+    background: linear-gradient(45deg, #999, #ccc);
+}
 
 .badge {
     position: absolute;
@@ -200,59 +190,22 @@ body {
     cursor: pointer;
 }
 
-.card-info { padding: 20px; }
-.card-info h3 { margin: 0 0 5px 0; font-size: 1.1rem; }
-.card-info p { margin: 0; color: var(--text-muted); font-size: 0.85rem; }
-
-/* --- Favorites --- */
-.horizontal-scroll {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    padding-bottom: 15px;
+.card-info {
+    padding: 20px;
 }
 
-.fav-card {
-    min-width: 200px;
-    padding: 25px;
-    border-radius: var(--radius);
-    color: white;
-    position: relative;
+.card-info h3 {
+    margin: 0 0 5px 0;
+    font-size: 1.1rem;
 }
 
-.purple-grad { background: linear-gradient(135deg, #9c27b0, #673ab7); }
-.green-grad { background: linear-gradient(135deg, #4caf50, #2e7d32); }
-.blue-grad { background: linear-gradient(135deg, #2196f3, #1565c0); }
-
-.fav-icon { font-size: 2rem; margin-bottom: 40px; }
-.fav-card h4 { margin: 0 0 8px 0; font-size: 1rem; }
-.fav-card p { font-size: 0.65rem; font-weight: 700; opacity: 0.9; }
-
-.mini-play {
-    position: absolute;
-    bottom: 15px;
-    right: 15px;
-    background: white;
-    border-radius: 50%;
-    width: 25px;
-    height: 25px;
-    border: none;
-    color: var(--purple);
-    font-size: 0.6rem;
+.card-info p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.85rem;
 }
 
-.add-btn {
-    min-width: 50px;
-    height: 50px;
-    align-self: center;
-    border-radius: 50%;
-    background: var(--purple);
-    color: white;
-    font-size: 1.5rem;
-    border: none;
-}
-
-/* --- Shared List --- */
+/* ================= SHARED SECTION ================= */
 .shared-list {
     display: flex;
     flex-direction: column;
@@ -278,9 +231,20 @@ body {
     margin-right: 20px;
 }
 
-.shared-text h4 { margin: 0; }
-.shared-text p { margin: 0; font-size: 0.85rem; color: var(--text-muted); }
-.shared-text span { color: var(--purple); font-weight: 700; }
+.shared-text h4 {
+    margin: 0;
+}
+
+.shared-text p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.shared-text span {
+    color: var(--purple);
+    font-weight: 700;
+}
 
 .play-circle {
     margin-left: auto;
@@ -290,4 +254,5 @@ body {
     width: 35px;
     height: 35px;
     color: var(--text-muted);
+    cursor: pointer;
 }
