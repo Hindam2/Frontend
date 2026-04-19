@@ -95,21 +95,34 @@ body {
     font-weight: 800;
     color: var(--purple);
     font-size: 0.8rem;
+    letter-spacing: 1px;
 }
 
-/* ================= SEARCH ================= */
+/* ================= SEARCH BAR FIX ================= */
 .search-container {
+    position: relative;
     max-width: 400px;
     margin-bottom: 30px;
 }
 
 #quizSearch {
     width: 100%;
-    padding: 12px 20px;
+    padding: 12px 45px 12px 20px; /* space for icon */
     border-radius: 30px;
     border: none;
     background: #f1e9ff;
     font-size: 1rem;
+    outline: none;
+}
+
+.search-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    color: var(--text-muted);
+    pointer-events: none;
 }
 
 /* ================= QUIZ GRID ================= */
@@ -192,7 +205,7 @@ body {
     font-size: 0.85rem;
 }
 
-/* ================= SHARED ================= */
+/* ================= SHARED SECTION ================= */
 .shared-list {
     display: flex;
     flex-direction: column;
