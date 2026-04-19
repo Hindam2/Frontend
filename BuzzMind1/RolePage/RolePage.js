@@ -38,6 +38,6 @@ function handleContinue() {
   } else if (selectedRole === 'student') {
     window.location.href = '../Student pages/Home page/index.html';
   } else if (selectedRole === 'admin') {
-    window.location.href = '../Admin pages/Home page/prof-directory.html';
+    window.location.href = '../Admin pages/Home page/Admin Home.html';
   }
 }
