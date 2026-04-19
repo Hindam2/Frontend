@@ -8,6 +8,25 @@ const students = [
 
 let editingId = null;
 
+// ── Email validation ──
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+// ── Name validation (letters, spaces, hyphens, apostrophes only — min 2 chars) ──
+function isValidName(name) {
+  return /^[a-zA-Z\s\-']{2,}$/.test(name);
+}
+
+// ── Show/clear error messages ──
+function showError(id, message) {
+  document.querySelector(id).textContent = message;
+}
+
+function clearErrors(...ids) {
+  ids.forEach(id => document.querySelector(id).textContent = '');
+}
+
 // ── Helpers ──
 function gradeClass(g) {
   if (g >= 85) return 'grade-high';
@@ -61,12 +80,10 @@ function renderRoster(list) {
   document.querySelector('#roster-count').textContent =
     `SHOWING ${list.length} OF ${students.length} STUDENTS`;
 
-  // Edit buttons
   document.querySelectorAll('.btn-edit').forEach(btn => {
     btn.addEventListener('click', () => openEditModal(parseInt(btn.dataset.id)));
   });
 
-  // Delete buttons
   document.querySelectorAll('.btn-delete').forEach(btn => {
     btn.addEventListener('click', () => {
       const id = parseInt(btn.dataset.id);
@@ -94,13 +111,35 @@ const addModal = document.querySelector('#add-modal');
 document.querySelector('#add-student-btn').addEventListener('click', () => {
   document.querySelector('#new-name').value = '';
   document.querySelector('#new-email').value = '';
+  clearErrors('#add-name-error', '#add-email-error');
   addModal.style.display = 'flex';
 });
 
 document.querySelector('#confirm-add').addEventListener('click', () => {
   const name  = document.querySelector('#new-name').value.trim();
   const email = document.querySelector('#new-email').value.trim();
-  if (!name || !email) return;
+
+  clearErrors('#add-name-error', '#add-email-error');
+
+  let valid = true;
+
+  if (!name) {
+    showError('#add-name-error', 'Please enter a name.');
+    valid = false;
+  } else if (!isValidName(name)) {
+    showError('#add-name-error', 'Name must be at least 2 characters. No numbers or special characters.');
+    valid = false;
+  }
+
+  if (!email) {
+    showError('#add-email-error', 'Please enter an email.');
+    valid = false;
+  } else if (!isValidEmail(email)) {
+    showError('#add-email-error', 'Please enter a valid email address.');
+    valid = false;
+  }
+
+  if (!valid) return;
 
   students.push({
     id: Date.now(),
@@ -128,13 +167,35 @@ function openEditModal(id) {
   editingId = id;
   document.querySelector('#edit-name').value  = student.name;
   document.querySelector('#edit-email').value = student.email;
+  clearErrors('#edit-name-error', '#edit-email-error');
   editModal.style.display = 'flex';
 }
 
 document.querySelector('#confirm-edit').addEventListener('click', () => {
   const name  = document.querySelector('#edit-name').value.trim();
   const email = document.querySelector('#edit-email').value.trim();
-  if (!name || !email) return;
+
+  clearErrors('#edit-name-error', '#edit-email-error');
+
+  let valid = true;
+
+  if (!name) {
+    showError('#edit-name-error', 'Please enter a name.');
+    valid = false;
+  } else if (!isValidName(name)) {
+    showError('#edit-name-error', 'Name must be at least 2 characters. No numbers or special characters.');
+    valid = false;
+  }
+
+  if (!email) {
+    showError('#edit-email-error', 'Please enter an email.');
+    valid = false;
+  } else if (!isValidEmail(email)) {
+    showError('#edit-email-error', 'Please enter a valid email address.');
+    valid = false;
+  }
+
+  if (!valid) return;
 
   const student = students.find(s => s.id === editingId);
   if (student) {

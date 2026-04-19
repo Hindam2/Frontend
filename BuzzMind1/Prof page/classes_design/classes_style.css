@@ -539,3 +539,11 @@ i { color: blueviolet; }
   font-size: 15px;
   cursor: pointer;
 }
+
+/* ── Modal error messages ── */
+.modal-error {
+  color: red;
+  font-size: 12px;
+  min-height: 16px;
+  margin-top: -4px;
+}
