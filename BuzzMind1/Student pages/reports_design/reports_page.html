@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BuzzMind - Reports</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&family=DM+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../Home Page/style.css">
+  <link rel="stylesheet" href="reports_style.css">
+  <script src="report_script.js" defer></script>
+</head>
+<body>
+<nav class="navbar">
+      <a href="#" class="logo">BuzzMind</a>
+      <ul class="nav-links">
+        <li><a href="#" class="active">Discover</a></li>
+        <li><a href="../../Libary/index.html">Library</a></li>
+        <li><a href="#">Reports</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-outline" id="Enter-btn">Enter PIN</button>
+        <a href="../Settings%20page/Settings.html" class="avatar">U</a>
+      </div>
+    </nav>
+
+  <hr>
+
+  <h1>Performance <i>DeepDive</i></h1>
+  <p id="p1">Your quizzes are making waves! Here is how your audience interacted with your content this week.</p>
+
+  <br>
+
+  <div class="stat-cards">
+    <div class="card-players">
+      <div class="fbox-label">Total players</div>
+      <div><b class="fbox-number">12,408</b></div>
+    </div>
+    <div class="card-accuracy">
+      <div class="fbox-label">Accuracy</div>
+      <div><b class="fbox-number">78.2%</b></div>
+    </div>
+    <div class="card-score">
+      <div class="fbox-label">Average score</div>
+      <div><b class="fbox-number">4,850</b></div>
+      <div>points per session</div>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="recent-header">
+    <b class="section-title">Recent Sessions</b>
+    <div class="archive-link">view Archive &rsaquo;</div>
+  </div>
+
+  <br>
+
+  <div class="session-list">
+
+    <div class="rs-row" data-title="World Capitals Challenge" data-meta="Played 2 hours ago • Live Game" data-icon="🌍" data-icon-color="purple" data-players="42" data-accuracy="84%" data-score="4,850">
+      <div class="session-info">
+        <div class="rs-icon purple">🌍</div>
+        <div>
+          World Capitals Challenge
+          <div class="rs-meta">Played 2 hours ago • Live Game</div>
+        </div>
+      </div>
+      <div class="session-stats">
+        <div class="rs-stat">PLAYERS <div class="stat-number">42</div></div>
+        <div class="rs-stat">AVG ACCURACY <div class="stat-accuracy">84%</div></div>
+        <div><button class="btn-details">View Details</button></div>
+      </div>
+    </div>
+
+    <div class="rs-row green-border" data-title="Periodic Table Basics" data-meta="Played 5 hours ago • Assignment" data-icon="⚗️" data-icon-color="green" data-players="128" data-accuracy="62%" data-score="3,210">
+      <div class="session-info">
+        <div class="rs-icon green">⚗️</div>
+        <div>
+          Periodic Table Basics
+          <div class="rs-meta">Played 5 hours ago • Assignment</div>
+        </div>
+      </div>
+      <div class="session-stats">
+        <div class="rs-stat">PLAYERS <div class="stat-number">128</div></div>
+        <div class="rs-stat">AVG ACCURACY <div class="stat-accuracy">62%</div></div>
+        <div><button class="btn-details">View Details</button></div>
+      </div>
+    </div>
+
+    <div class="rs-row blue-border" data-title="90s Pop Trivia" data-meta="Played yesterday • Solo" data-icon="🎵" data-icon-color="blue" data-players="15" data-accuracy="91%" data-score="5,500">
+      <div class="session-info">
+        <div class="rs-icon blue">🎵</div>
+        <div>
+          90s Pop Trivia
+          <div class="rs-meta">Played yesterday • Solo</div>
+        </div>
+      </div>
+      <div class="session-stats">
+        <div class="rs-stat">PLAYERS <div class="stat-number">15</div></div>
+        <div class="rs-stat">AVG ACCURACY <div class="stat-accuracy">91%</div></div>
+        <div><button class="btn-details">View Details</button></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Details Modal -->
+  <div id="details-modal" class="pin-modal">
+    <div class="pin-box details-box">
+      <div id="details-icon" class="rs-icon purple details-icon">🌍</div>
+      <h2 id="details-title">World Capitals Challenge</h2>
+      <p id="details-meta" class="rs-meta details-meta">Played 2 hours ago • Live Game</p>
+      <div class="details-stats">
+        <div class="details-stat">
+          <div class="details-stat-label">PLAYERS</div>
+          <div class="details-stat-value" id="details-players">42</div>
+        </div>
+        <div class="details-stat">
+          <div class="details-stat-label">AVG ACCURACY</div>
+          <div class="details-stat-value green" id="details-accuracy">84%</div>
+        </div>
+        <div class="details-stat">
+          <div class="details-stat-label">AVG SCORE</div>
+          <div class="details-stat-value" id="details-score">4,850</div>
+        </div>
+      </div>
+      <button class="pin-cancel" id="details-close">Close</button>
+    </div>
+  </div>
+
+  <!-- Archive Modal -->
+  <div id="archive-modal" class="pin-modal">
+    <div class="pin-box details-box">
+      <h2>Session Archive</h2>
+      <p class="rs-meta archive-meta">Your past sessions</p>
+      <div class="archive-list">
+        <div class="archive-item">
+          <span>🗺️ Geography Blitz</span>
+          <span class="rs-meta">3 days ago</span>
+        </div>
+        <div class="archive-item">
+          <span>🧬 Biology Basics</span>
+          <span class="rs-meta">5 days ago</span>
+        </div>
+        <div class="archive-item">
+          <span>🏛️ Ancient History</span>
+          <span class="rs-meta">1 week ago</span>
+        </div>
+        <div class="archive-item">
+          <span>🔢 Math Madness</span>
+          <span class="rs-meta">2 weeks ago</span>
+        </div>
+      </div>
+      <button class="pin-cancel" id="archive-close">Close</button>
+    </div>
+  </div>
+
+  <div id="pin-modal" class="pin-modal">
+    <div class="pin-box">
+      <h2>Enter your PIN</h2>
+      <input type="password" id="pin-input" placeholder="Enter PIN">
+      <p id="pin-error" class="pin-error"></p>
+      <button class="pin-confirm">Confirm</button>
+      <button class="pin-cancel">Cancel</button>
+    </div>
+  </div>
+
+</body>
+</html>
