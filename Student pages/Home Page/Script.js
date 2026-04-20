@@ -1,56 +1,67 @@
 // ---------- Join Game ----------
-function joinGame() {
-  const input = document.getElementById('pinInput');
+function joinGame(event) {
+  event.preventDefault();
+
+  const input = document.getElementById("pinInput");
   const pin = input.value.trim();
 
-  // PIN should be 4-8 digits
+  // Empty
   if (!pin) {
-    showPinError(input, 'Please enter a Game PIN.');
+    showPinError(input, "Please enter a Game PIN.");
     return;
   }
 
-  if (!/^\d{4,8}$/.test(pin)) {
-    showPinError(input, 'PIN must be 4–8 digits.');
+  // Must be 6 digits
+  if (!/^\d{6}$/.test(pin)) {
+    showPinError(input, "PIN must be 6 digits.");
     return;
   }
 
-  // Success state
-  input.style.borderColor = '#10b981'; // green
-  const btn = document.querySelector('.btn-join');
-  btn.textContent = 'Joining...';
+  // Correct PIN only
+  if (pin !== "734912") {
+    showPinError(input, "Wrong Game PIN.");
+    return;
+  }
+
+  // Success
+  input.style.borderColor = "#10b981";
+
+  const btn = document.querySelector(".btn-join");
+  btn.textContent = "Joining...";
   btn.disabled = true;
 
   setTimeout(() => {
-    alert(`Joining game with PIN: ${pin}`);
-    btn.textContent = 'JOIN GAME';
-    btn.disabled = false;
-    input.value = '';
-    input.style.borderColor = '';
-  }, 1200);
+    window.location.href = "../Joined Students/Joined Students.html";
+  }, 1000);
 }
 
-function showPinError(input, message) {
-  input.style.borderColor = '#ef4444'; // red
-  input.placeholder = message;
-  input.value = '';
 
-  // Reset after 2 seconds
+// ---------- Error ----------
+function showPinError(input, message) {
+  input.style.borderColor = "#ef4444";
+  input.value = "";
+  input.placeholder = message;
+
   setTimeout(() => {
-    input.style.borderColor = '';
-    input.placeholder = 'GAME PIN';
+    input.style.borderColor = "";
+    input.placeholder = "GAME PIN";
   }, 2000);
 }
 
-// Allow pressing Enter to submit the PIN
-document.addEventListener('DOMContentLoaded', () => {
-  const input = document.getElementById('pinInput');
 
-  // Only allow numeric input in the PIN field
-  input.addEventListener('input', () => {
-    input.value = input.value.replace(/\D/g, '');
+// ---------- Load ----------
+document.addEventListener("DOMContentLoaded", () => {
+  const input = document.getElementById("pinInput");
+
+  // Numbers only
+  input.addEventListener("input", () => {
+    input.value = input.value.replace(/\D/g, "");
   });
 
-  input.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') joinGame();
+  // Enter key
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      joinGame(e);
+    }
   });
 });
