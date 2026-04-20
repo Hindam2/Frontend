@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin – Home</title>
+  <link rel="stylesheet" href="Admin Home.css"/>
+</head>
+<body>
+
+<!-- ══ SIDEBAR ══ -->
+<aside class="sidebar">
+  <div class="sb-brand">BuzzMind</div>
+
+  <div class="user-card">
+    <div class="user-av">M</div>
+    <div>
+      <div class="user-name">Management</div>
+      <div class="user-role">System Controller</div>
+    </div>
+  </div>
+
+  <nav class="side-nav">
+    <a href="#" class="sl on"><span class="sl-ico">🎓</span> Professors</a>
+  </nav>
+
+  <div class="sb-bottom">
+    <a href="../Settings page/SettingsP.html" class="sl-sm">↪ Sign Out</a>
+  </div>
+</aside>
+
+<!-- ══ MAIN ══ -->
+<div class="main">
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <span class="tb-brand">BuzzMind</span>
+    <nav class="tb-nav">
+      <a href="#" class="on">Professors</a>
+    </nav>
+    <div class="tb-right">
+      <div class="search-wrap">
+        <span class="search-ico">🔍</span>
+        <input type="text" placeholder="Search professors..." id="searchInput"/>
+      </div>
+      <button class="icon-btn">👤</button>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <div class="content">
+
+    <!-- Page Header -->
+    <div class="page-header">
+      <div>
+        <h1>Professor Directory</h1>
+        <p>Managing 24 faculty members across 6 departments.</p>
+      </div>
+      <button class="btn-add" onclick="addProfessor()">👤+ Add Professor</button>
+    </div>
+
+    <!-- Stat Pills -->
+    <div class="stats-row">
+      <div class="stat-pill purple">
+        <div class="stat-lbl">ACTIVE STAFF</div>
+        <div class="stat-num">184</div>
+      </div>
+      <div class="stat-pill green">
+        <div class="stat-lbl">AVG. STUDENTS</div>
+        <div class="stat-num">42.5</div>
+      </div>
+      <div class="stat-pill blue">
+        <div class="stat-lbl">DEPARTMENTS</div>
+        <div class="stat-num">12</div>
+      </div>
+      <div class="stat-pill lavender">
+        <div class="stat-lbl">OPEN ROLES</div>
+        <div class="stat-num">06</div>
+      </div>
+    </div>
+
+    <!-- Professor Cards Grid -->
+    <div class="prof-grid" id="profGrid">
+
+      <!-- Card 1 -->
+      <div class="prof-card">
+        <div class="prof-top">
+          <div class="prof-av" style="background:linear-gradient(135deg,#6b3a2a,#9b5a3a)">ER</div>
+          <div class="prof-info">
+            <div class="name-row">
+              <h3>Dr. Elena Rodriguez</h3>
+              <span class="dept-badge physics">PHYSICS</span>
+            </div>
+            <div class="email">✉ e.rodriguez@university.edu</div>
+          </div>
+        </div>
+        <div class="prof-stats">
+          <div class="pstat">
+            <div class="pstat-lbl">TOTAL CLASSES</div>
+            <div class="pstat-val">04 <span class="dots green-dots">●●●●●</span></div>
+          </div>
+          <div class="pstat">
+            <div class="pstat-lbl">TOTAL STUDENTS</div>
+            <div class="pstat-val big">128</div>
+          </div>
+        </div>
+        <div class="card-foot">
+          <a href="../prof dashboard/index.html"><button class="btn-view" onclick="viewDetails('Dr. Elena Rodriguez')">View Details</button></a>
+          <button class="btn-del" onclick="deleteProfessor(this, 'Dr. Elena Rodriguez')">🗑</button>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="prof-card">
+        <div class="prof-top">
+          <div class="prof-av" style="background:linear-gradient(135deg,#2d3a2a,#4a5a3a)">JT</div>
+          <div class="prof-info">
+            <div class="name-row">
+              <h3>Prof. Julian Thorne</h3>
+              <span class="dept-badge cs">COMPUTER SCIENCE</span>
+            </div>
+            <div class="email">✉ j.thorne@university.edu</div>
+          </div>
+        </div>
+        <div class="prof-stats">
+          <div class="pstat">
+            <div class="pstat-lbl">TOTAL CLASSES</div>
+            <div class="pstat-val">06 <span class="dots blue-dots">●●●●●●</span></div>
+          </div>
+          <div class="pstat">
+            <div class="pstat-lbl">TOTAL STUDENTS</div>
+            <div class="pstat-val big">245</div>
+          </div>
+        </div>
+        <div class="card-foot">
+          <a href="../prof dashboard/index.html"><button class="btn-view" onclick="viewDetails('Prof. Julian Thorne')">View Details</button></a>
+          <button class="btn-del" onclick="deleteProfessor(this, 'Prof. Julian Thorne')">🗑</button>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="prof-card">
+        <div class="prof-top">
+          <div class="prof-av" style="background:linear-gradient(135deg,#3a2a4a,#5a3a6a)">SJ</div>
+          <div class="prof-info">
+            <div class="name-row">
+              <h3>Dr. Sarah Jenkins</h3>
+              <span class="dept-badge sociology">SOCIOLOGY</span>
+            </div>
+            <div class="email">✉ s.jenkins@university.edu</div>
+          </div>
+        </div>
+        <div class="prof-stats">
+          <div class="pstat">
+            <div class="pstat-lbl">TOTAL CLASSES</div>
+            <div class="pstat-val">03 <span class="dots purple-dots">●●●</span></div>
+          </div>
+          <div class="pstat">
+            <div class="pstat-lbl">TOTAL STUDENTS</div>
+            <div class="pstat-val big">94</div>
+          </div>
+        </div>
+        <div class="card-foot">
+          <a href="../prof dashboard/index.html"><button class="btn-view" onclick="viewDetails('Dr. Sarah Jenkins')">View Details</button></a>
+          <button class="btn-del" onclick="deleteProfessor(this, 'Dr. Sarah Jenkins')">🗑</button>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="prof-card">
+        <div class="prof-top">
+          <div class="prof-av" style="background:linear-gradient(135deg,#1a2a4a,#2a3a6a)">MC</div>
+          <div class="prof-info">
+            <div class="name-row">
+              <h3>Dr. Michael Chen</h3>
+              <span class="dept-badge economics">ECONOMICS</span>
+            </div>
+            <div class="email">✉ m.chen@university.edu</div>
+          </div>
+        </div>
+        <div class="prof-stats">
+          <div class="pstat">
+            <div class="pstat-lbl">TOTAL CLASSES</div>
+            <div class="pstat-val">05 <span class="dots blue-dots">●●●●●</span></div>
+          </div>
+          <div class="pstat">
+            <div class="pstat-lbl">TOTAL STUDENTS</div>
+            <div class="pstat-val big">188</div>
+          </div>
+        </div>
+        <div class="card-foot">
+          <a href="../prof dashboard/index.html"><button class="btn-view" onclick="viewDetails('Dr. Michael Chen')">View Details</button></a>
+          <button class="btn-del" onclick="deleteProfessor(this, 'Dr. Michael Chen')">🗑</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="Admin Home.js"></script>
+</body>
+</html>
