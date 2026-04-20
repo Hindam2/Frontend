@@ -134,7 +134,7 @@ function endQuiz() {
   sessionStorage.setItem('quizTitle', QUIZ_DATA.title);
 
   setTimeout(() => {
-    window.location.href = 'leaderboard.html';
+    window.location.href = "leaderboard2.html";
   }, 800);
 }
 
