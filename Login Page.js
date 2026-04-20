@@ -38,7 +38,7 @@ function validateemail() {
     }
 
     if (x) {
-        window.location.href = '/RolePage/RolePage.html'; 
+        window.location.href = "RolePage/RolePage.html"; 
     }
     return false;
 }
