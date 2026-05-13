@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BuzzMind – The Fun Way to Learn and Play</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=DM+Sans:wght@400;500&display=swap"
+      rel="stylesheet" />
+  </head>
+  <body>
+    <!-- ===== NAVBAR ===== -->
+    <nav class="navbar">
+      <a href="#" class="logo">BuzzMind</a>
+      <ul class="nav-links">
+        <li><a href="#" class="active">Discover</a></li>
+        <li><a href="#">Library</a></li>
+        <li><a href="#">Reports</a></li>
+        <li><a href="#">Groups</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="btn-outline">Enter PIN</button>
+        <div class="avatar"></div>
+      </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <h1>The fun way to <em>learn</em> and <br /><em>play!</em></h1>
+      <p class="hero-sub">
+        Host a game, challenge your friends, and master any subject<br />
+        with the ultimate kinetic learning playground.
+      </p>
+
+      <!-- Game PIN Card -->
+      <div class="pin-card">
+        <input
+          type="text"
+          id="pinInput"
+          class="pin-input"
+          placeholder="GAME PIN"
+          maxlength="8" />
+        <button class="btn-join" onclick="joinGame()">JOIN GAME</button>
+        <p class="pin-hint">Ask your host for the game PIN to join</p>
+      </div>
+    </section>
+
+    <!-- ===== WHY BuzzMind ===== -->
+    <section class="how-it-works">
+      <h2>
+        <span style="color: var(--purple)">WHY</span>
+        <span class="logo">BuzzMind</span>
+      </h2>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-icon purple">⚡</div>
+          <h3>Instant Engagement</h3>
+          <p>
+            BuzzMind keeps learners hooked with fast-paced, game-style
+            challenges that make studying feel like play.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-icon blue">🧠</div>
+          <h3>Built for Real Learning</h3>
+          <p>
+            Our platform is designed around proven memory and retention
+            techniques — not just entertainment.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-icon green">📊</div>
+          <h3>Actionable Insights</h3>
+          <p>
+            Get detailed performance reports so teachers and students always
+            know exactly where to improve.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA BANNER ===== -->
+    <section class="cta-banner">
+      <div class="cta-content">
+        <span class="cta-rocket">🚀</span>
+        <h2>Ready to buzz your mind?</h2>
+        <p>
+          Create your free account today and start hosting unforgettable game
+          sessions.
+        </p>
+        <div class="cta-buttons">
+          <button class="btn-white">SIGN UP FREE</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      <div class="footer-brand">
+        <a href="#" class="logo footer-logo">BuzzMind</a>
+        <p>
+          Empowering learners and educators through kinetic, high-energy play.
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>PLATFORM</h4>
+          <a href="#">How it works</a>
+          <a href="#">Features</a>
+          <a href="#">Pricing</a>
+          <a href="#">Integrations</a>
+        </div>
+        <div class="footer-col">
+          <h4>RESOURCES</h4>
+          <a href="#">Blog</a>
+          <a href="#">Help Center</a>
+          <a href="#">Case Studies</a>
+          <a href="#">Webinars</a>
+        </div>
+        <div class="footer-col">
+          <h4>COMPANY</h4>
+          <a href="#">About Us</a>
+          <a href="#">Careers</a>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+        </div>
+      </div>
+    </footer>
+
+    <div class="footer-bottom">
+      <span>© 2025 BuzzMind. All rights reserved.</span>
+      <div>
+        <a href="#">English</a>
+        <a href="#">Global</a>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
